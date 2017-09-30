@@ -16,7 +16,7 @@
 	<div class="form-group">
 		<label>Kategori</label>
 		<select name="id_kategori" class="form-control">
-			<?php foreach ($kategories as $row): ?>
+			<?php foreach ($kategori as $row): ?>
 				<option value="<?=$row->id_kategori?>" ><?=$row->nama_kategori?></option>
 			<?php endforeach ?>
 		</select>

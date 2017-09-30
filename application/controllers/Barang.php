@@ -14,16 +14,19 @@ class Barang extends CI_Controller {
 	public function index()
 	{
 		$barangs = $this->barang_model->show();
+		$judul = 'Barang';
 		$content = $this->load->view('list_barang',compact('barangs'),TRUE);
-		$this->load->view('template',compact('content'));
+		$this->load->view('template',compact('content','judul'));
 	}
 
 	public function create()
 	{
 		# code...
+		
 		$kategories = $this->kategori_model->show();
+		$judul = 'Tambah Barang';
 		$content = $this->load->view('form_barang',compact('kategories'),TRUE);
-		$this->load->view('template',compact('content'));
+		$this->load->view('template',compact('content','judul'));
 	}
 
 	public function store()
@@ -44,9 +47,11 @@ class Barang extends CI_Controller {
 	public function edit($id)
 	{
 		# code...
+		$judul = 'Edit Barang';
+		$kategori = $this->kategori_model->show();
 		$barang = $this->barang_model->find($id);
-		$content = $this->load->view('form_barang',compact('barang'),TRUE);
-		$this->load->view('template',compact('content'));
+		$content = $this->load->view('form_barang',compact('barang','kategori'),TRUE);
+		$this->load->view('template',compact('content','judul'));
 
 	}
 
@@ -59,6 +64,7 @@ class Barang extends CI_Controller {
 						'nama_barang' =>$this->input->post('nama_barang'),
 						'harga'=>$this->input->post('harga'),
 						'stok'=>$this->input->post('stok'), 
+						'id_kategori'=>$this->input->post('id_kategori'),
 					);
 		$this->barang_model->update($id,$data);
 		$this->session->set_flashdata('status','Data berhasil diupdate');

@@ -12,23 +12,26 @@ class Kategori extends CI_Controller {
 	public function index()
 	{
 		$kategori = $this->kategori_model->show();
+		$judul = 'Kategori';
 		$content  = $this->load->view('list_kategori', compact('kategori'), TRUE);
-		$this->load->view('template', compact('content'));	
+		$this->load->view('template', compact('content','judul'));	
 
 	}
 
 	public function create()
 	{
 		# code...
+		$judul = 'Tambah Kategori';
 		$content = $this->load->view('form_kategori', '', TRUE);
-		$this->load->view('template', compact('content'));
+		$this->load->view('template', compact('content','judul'));
 	}
 	public function edit($id)
 	{
 		# code...
+		$judul = 'Edit Kategori';
 		$kategori = $this->kategori_model->find($id);
 		$content = $this->load->view('form_kategori', compact('kategori'), TRUE);
-		$this->load->view('template', compact('content'));
+		$this->load->view('template', compact('content','judul'));
 
 	}
 

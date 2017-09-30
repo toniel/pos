@@ -1,7 +1,10 @@
 <a href="<?= site_url('barang/create') ?>" class="btn btn-primary">Tambah Barang</a>
 
 <?php if ($this->session->has_userdata('status')): ?>
-	<?= $this->session->userdata('status') ?>
+	
+<div class="alert alert-success" role="alert"><?= $this->session->userdata('status') ?>
+	
+</div>
 <?php endif ?>
 
 <table class="table table-bordered">
