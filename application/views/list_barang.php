@@ -14,6 +14,7 @@
 		<th>Kategori</th>
 		<th>Harga</th>
 		<th>Stok</th>
+		<th>Gambar</th>
 		<th>Action</th>
 	</thead>
 	<tbody>
@@ -24,6 +25,9 @@
 				<td><?= $row->nama_kategori?></td>
 				<td><?= $row->harga?></td>
 				<td><?= $row->stok?></td>
+				<td>
+					<img src="<?= base_url()?>/uploads/<?=$row->gambar?>" width="100px">
+				</td>
 				<td>
 					<a class="btn btn-warning" href="<?= site_url('barang/edit/'.$row->id_barang) ?>">Edit</a>
 					<a class="btn btn-danger" href="<?= site_url('barang/delete/'.$row->id_barang) ?>">Hapus</a>

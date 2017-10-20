@@ -9,6 +9,12 @@ class Barang extends CI_Controller {
 		//Do your magic here
 		$this->load->model('barang_model');
 		$this->load->model('kategori_model');
+		//jika tidak ada session dg nama username maka menuju halaman user
+		//atau jika hak akses bukan admin menuju halaman user
+		if (!$this->session->has_userdata('username')|| $this->session->userdata('hak_akses')!='admin') {
+			# code...
+			redirect('user');
+		}
 	}
 
 	public function index()
@@ -23,22 +29,33 @@ class Barang extends CI_Controller {
 	{
 		# code...
 		
-		$kategories = $this->kategori_model->show();
+		$kategori = $this->kategori_model->show();
 		$judul = 'Tambah Barang';
-		$content = $this->load->view('form_barang',compact('kategories'),TRUE);
+		$content = $this->load->view('form_barang',compact('kategori'),TRUE);
 		$this->load->view('template',compact('content','judul'));
 	}
 
 	public function store()
 	{
 		# code...
-		$data = array(
-						'nama_barang'=>$this->input->post('nama_barang'),
-						'id_kategori'=>$this->input->post('id_kategori'),
-						'harga'=>$this->input->post('harga'),
-						'stok'=>$this->input->post('stok'),
-					);
-		$this->barang_model->save($data);
+
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size'] = 2048; 
+		
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('gambar');
+
+		$hasil = $this->upload->data();
+
+
+		
+		//mengisi nilai
+		$nama_file =$this->session->userdata('username');
+		$_POST['gambar']=$nama_file.'.jpg';
+
+	
+		$this->barang_model->save($this->input->post());
 		$this->session->set_flashdata('status','Data berhasil disimpan');
 		redirect('barang');
 		

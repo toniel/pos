@@ -7,7 +7,7 @@
 	$stok = isset($barang->stok)?$barang->stok:0;
  ?>
 
-<form class="form-horizontal" method="post" action="<?=site_url('barang/'.$method)?>">
+<form class="form-horizontal" method="post" action="<?=site_url('barang/'.$method)?>" enctype="multipart/form-data" >
 	<input type="hidden" name="id_barang" value="<?=$id_barang?>">
 	<div class="form-group">
 		<label>Nama Barang</label>
@@ -28,6 +28,10 @@
 	<div class="form-group">
 		<label>Stok</label>
 		<input type="number" value="<?=$stok?>" name="stok" class="form-control" required>
+	</div>
+	<div class="form-group">
+		<label>Gambar</label>
+		<input type="file"  name="gambar" class="form-control" required>
 	</div>
 	<div class="form-group">
 		<button type="submit" class="btn btn-success"><?=$method?></button>
