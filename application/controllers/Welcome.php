@@ -20,6 +20,14 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('template');
+		$this->load->view('table');
+	}
+
+	public function test($value='')
+	{
+		# code...
+		echo "Uri segment 1 =".$this->uri->segment(1)."<br>";
+		echo "Uri segment 2 =".$this->uri->segment(2)."<br>";
+		echo "Uri segment 3 =".$this->uri->segment(3)."<br>";
 	}
 }

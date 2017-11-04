@@ -28,7 +28,7 @@ class Barang extends CI_Controller {
 	public function create()
 	{
 		# code...
-		
+
 		$kategori = $this->kategori_model->show();
 		$judul = 'Tambah Barang';
 		$content = $this->load->view('form_barang',compact('kategori'),TRUE);
@@ -41,24 +41,24 @@ class Barang extends CI_Controller {
 
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size'] = 2048; 
-		
+		$config['max_size'] = 2048;
+
 		$this->load->library('upload', $config);
 		$this->upload->do_upload('gambar');
 
 		$hasil = $this->upload->data();
 
 
-		
+
 		//mengisi nilai
 		$nama_file =$this->session->userdata('username');
 		$_POST['gambar']=$nama_file.'.jpg';
 
-	
+
 		$this->barang_model->save($this->input->post());
 		$this->session->set_flashdata('status','Data berhasil disimpan');
 		redirect('barang');
-		
+
 	}
 
 	public function edit($id)
@@ -75,12 +75,12 @@ class Barang extends CI_Controller {
 	public function update()
 	{
 		# code...
-		// menangkap id dari form 
+		// menangkap id dari form
 		$id = $this->input->post('id_barang');
 		$data = array(
 						'nama_barang' =>$this->input->post('nama_barang'),
 						'harga'=>$this->input->post('harga'),
-						'stok'=>$this->input->post('stok'), 
+						'stok'=>$this->input->post('stok'),
 						'id_kategori'=>$this->input->post('id_kategori'),
 					);
 		$this->barang_model->update($id,$data);

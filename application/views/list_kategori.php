@@ -1,8 +1,12 @@
-<table class="table table-stripped">
+<a href="<?= site_url('kategori/create') ?>" class="btn btn-primary">Tambah Kategori</a>
+
+<table class="table table-stripped" id="tabel">
 	<thead>
-		<th>No</th>
-		<th>Nama Kategori</th>
-		<th>Action</th>
+		<tr>
+			<th>No</th>
+			<th>Nama Kategori</th>
+			<th>Action</th>
+		</tr>
 	</thead>
 	<tbody>
 		<?php $no=1 ?>
@@ -19,3 +23,11 @@
 		<?php endforeach ?>
 	</tbody>
 </table>
+<script>
+ $(document).ready(function() {
+		 $('#tabel').mouseover(function(event) {
+		 	/* Act on the event */
+			alert('success');
+		 });
+ });
+ </script>

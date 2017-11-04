@@ -11,14 +11,17 @@ class User extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('login');
+		$users = $this->user_model->show();
+		$judul = 'List User';
+		$content =  $this->load->view('list_user',compact('users'),TRUE);
+		$this->load->view('template', compact('content','judul'));
 	}
 
 	public function login()
 	{
 		# code...
 		$username = $this->input->post('username');
-		$password = $this->input->post('password');
+		$password = md5($this->input->post('password'));
 
 		$hasil = $this->user_model->login($username,$password);
 
@@ -32,18 +35,18 @@ class User extends CI_Controller {
 					'username' => $row->username,
 					'hak_akses' => $row->hak_akses
 				);
-				
+
 				$this->session->set_userdata($data_session);
 			}
 			redirect('barang');
 		}else{
 			$this->load->view('login');
-		}	
+		}
 	}
 
 	public function logout()
 	{
-		
+
 		// sess_destroy menghapus semua session yg tersimpan
 		$this->session->sess_destroy();
 		$this->load->view('login');

@@ -12,19 +12,23 @@
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?= base_url()?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="<?=base_url()?>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="<?= base_url()?>/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="<?=base_url()?>/assets/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="<?=base_url()?>/assets/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="<?= base_url()?>/dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="<?= base_url()?>/vendor/morrisjs/morris.css" rel="stylesheet">
+    <link href="<?=base_url()?>/dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="<?= base_url()?>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -277,23 +281,15 @@
 
                             <!-- /input-group -->
                         </li>
-                        <li>
+                      <li class="<?= $this->uri->segment(1)=='barang'?'active':'' ?>">
                             <a href="<?= site_url('barang') ?>"><i class="fa fa-dashboard fa-fw"></i>Barang</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
+                        <li class="<?= $this->uri->segment(1)=='kategori'?'active':'' ?>">
+                            <a href="<?= site_url('kategori') ?>"><i class="fa fa-bar-chart-o fa-fw"></i> Kategori</a>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            <a href="<?= site_url('user') ?>"><i class="fa fa-table fa-fw"></i> User</a>
                         </li>
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
@@ -387,22 +383,27 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="<?= base_url()?>/vendor/jquery/jquery.min.js"></script>
+
+    <script src="<?=base_url()?>/assets/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="<?= base_url()?>/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?=base_url()?>/assets/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="<?= base_url()?>/vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="<?=base_url()?>/assets/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="<?= base_url()?>/vendor/raphael/raphael.min.js"></script>
-    <script src="<?= base_url()?>/vendor/morrisjs/morris.min.js"></script>
-    <script src="<?= base_url()?>/data/morris-data.js"></script>
+    <!-- DataTables JavaScript -->
+    <script src="<?=base_url()?>/assets/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url()?>/assets/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="<?=base_url()?>/assets/datatables-responsive/dataTables.responsive.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="<?= base_url()?>/dist/js/sb-admin-2.js"></script>
+    <script src="<?=base_url()?>/dist/js/sb-admin-2.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#tabel').DataTable();
+    });
+    </script>
 
 </body>
 
