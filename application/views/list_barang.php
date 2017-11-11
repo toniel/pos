@@ -26,7 +26,11 @@
 				<td><?= $row->harga?></td>
 				<td><?= $row->stok?></td>
 				<td>
-					<img src="<?= base_url()?>/uploads/<?=$row->gambar?>" width="100px">
+					<?php if ($row->gambar): ?>
+						<img src="<?= base_url()?>/uploads/<?=$row->gambar?>" width="100px">
+					<?php else: ?>
+						<img src="<?= base_url() ?>/uploads/default.png" alt="">
+					<?php endif ?>
 				</td>
 				<td>
 					<a class="btn btn-warning" href="<?= site_url('barang/edit/'.$row->id_barang) ?>">Edit</a>
