@@ -24,7 +24,7 @@ class Barang extends CI_Controller {
 		$content = $this->load->view('list_barang',compact('barangs'),TRUE);
 		$this->load->view('template',compact('content','judul'));
 	}
-
+    
 	public function create()
 	{
 		# code...
